@@ -1,5 +1,5 @@
 #Lsb 7 Netmiko lab_ss
-
+import os
 from netmiko import ConnectHandler
 from getpass import getpass
 
@@ -12,4 +12,8 @@ device = {'ip' : '192.168.220.11', 'username' : USERNAME, 'password' : PASS, 'de
 c = ConnectHandler(**device)
 
 output = c.send_command('show run')
-print(output)
+
+f = open('backup.conf', 'x')
+
+f.write(output)
+f.close()
